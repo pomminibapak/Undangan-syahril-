@@ -313,12 +313,15 @@
       font-family: inherit;
     }
 
-        /* Floating Navigation (Presisi Center Bawah) */
+          /* Floating Navigation (Terkunci Tengah Tanpa Transform) */
     .bottom-nav {
       position: fixed;
       bottom: 20px;
-      left: 50%;
-      transform: translate(-50%, 100px); /* Kunci selalu -50% horizontal */
+      left: 0;
+      right: 0;
+      margin: 0 auto;               /* Otomatis presisi di tengah layar */
+      width: fit-content;
+      max-width: 90vw;
       background: rgba(255, 255, 255, 0.65);
       backdrop-filter: blur(15px);
       -webkit-backdrop-filter: blur(15px);
@@ -331,17 +334,18 @@
       padding: 10px 22px;
       z-index: 9999;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      
+      /* Kondisi tertutup di awal */
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
-      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
-      width: max-content;
-      max-width: 90vw;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
     }
 
-    /* Posisi saat tombol Buka Undangan ditekan */
+    /* Kondisi saat undangan dibuka */
     .bottom-nav.active {
-      transform: translate(-50%, 0) !important; /* Tetap berada tepat di tengah */
       opacity: 1;
+      visibility: visible;
       pointer-events: auto;
     }
     .bottom-nav a {
