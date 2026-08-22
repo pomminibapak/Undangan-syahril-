@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sahril & Uum</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 20% 20%,#315d4c 0,#193d31 35%,#09261d 100%);
+    font-family:Georgia,"Times New Roman",serif;
+    color:#174b3a;
+    padding:35px 12px;
+}
+
+/* KERTAS UTAMA */
+.page{
+    width:100%;
+    max-width:900px;
+    min-height:calc(100vh - 70px);
+    margin:auto;
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255,255,255,.96) 0%,
+            rgba(237,245,239,.95) 65%,
+            rgba(220,235,225,.94) 100%
+        );
+
+    border:1px solid #d1dfd4;
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.35),
+        inset 0 0 60px rgba(90,130,105,.08);
+
+    padding:70px 35px 55px;
+}
+
+/* GARIS BINGKAI */
+.page:before,
+.page:after{
+    content:"";
+    position:absolute;
+    pointer-events:none;
+}
+
+.page:before{
+    inset:22px;
+    border:1px solid rgba(116,151,129,.45);
+}
+
+.page:after{
+    inset:30px;
+    border:1px solid rgba(116,151,129,.25);
+}
+
+/* ISI */
+.content{
+    position:relative;
+    z-index:2;
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+}
+
+/* JUDUL ATAS */
+.special{
+    font-family:Arial,sans-serif;
+    font-size:17px;
+    letter-spacing:8px;
+    margin-bottom:35px;
+    color:#174b3a;
+}
+
+/* NAMA */
+.name{
+    font-family:"Brush Script MT",
+                 "Segoe Script",
+                 "Lucida Handwriting",
+                 cursive;
+    font-size:clamp(70px,12vw,120px);
+    line-height:.85;
+    font-weight:normal;
+    color:#07553b;
+    text-shadow:0 1px 1px rgba(0,0,0,.08);
+}
+
+.and{
+    margin:20px 0 5px;
+    font-size:48px;
+    color:#c4a653;
+    font-family:Georgia,serif;
+    font-style:italic;
+}
+
+.decor{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    margin:35px 0 35px;
+}
+
+.decor span{
+    width:150px;
+    height:1px;
+    background:#c5a650;
+}
+
+.flower{
+    color:#c5a650;
+    font-size:30px;
+}
+
+/* KOTAK PESAN */
+.message{
+    max-width:650px;
+    margin:0 auto;
+    padding:28px 25px;
+
+    border:1px solid rgba(255,255,255,.9);
+    border-radius:30px;
+
+    background:rgba(255,255,255,.50);
+
+    box-shadow:
+        0 8px 25px rgba(67,100,78,.08),
+        inset 0 0 20px rgba(255,255,255,.5);
+
+    font-size:25px;
+    line-height:1.45;
+}
+
+/* SUBTEXT */
+.description{
+    margin:45px auto 55px;
+    max-width:650px;
+    font-family:Arial,sans-serif;
+    font-size:18px;
+    line-height:1.8;
+    color:#587268;
+}
+
+/* CREATOR */
+.creator{
+    font-family:Arial,sans-serif;
+    font-size:17px;
+    color:#45665a;
+    margin-bottom:18px;
+}
+
+.creator strong{
+    color:#174b3a;
+}
+
+/* WHATSAPP */
+.whatsapp{
+    display:inline-block;
+    padding:11px 28px;
+
+    border:1px solid #6c9a84;
+    border-radius:30px;
+
+    color:#174b3a;
+    text-decoration:none;
+
+    background:rgba(255,255,255,.45);
+
+    font-family:Arial,sans-serif;
+    font-size:16px;
+
+    transition:.3s;
+}
+
+.whatsapp:hover{
+    background:#174b3a;
+    color:white;
+    transform:translateY(-2px);
+}
+
+.whatsapp:active{
+    transform:scale(.97);
+}
+
+/* DAUN-DEKORASI RINGAN */
+.leaf{
+    position:absolute;
+    z-index:1;
+    width:65px;
+    height:35px;
+    background:rgba(142,183,157,.25);
+    border-radius:100% 0 100% 0;
+    transform:rotate(-35deg);
+}
+
+.leaf.l1{
+    left:7%;
+    top:24%;
+}
+
+.leaf.l2{
+    right:8%;
+    top:30%;
+    transform:rotate(45deg);
+}
+
+.leaf.l3{
+    left:10%;
+    bottom:27%;
+    transform:rotate(35deg);
+}
+
+.leaf.l4{
+    right:10%;
+    bottom:18%;
+    transform:rotate(-30deg);
+}
+
+.leaf.l5{
+    left:50%;
+    bottom:8%;
+    transform:rotate(15deg);
+}
+
+/* RESPONSIVE HP */
+@media(max-width:600px){
+
+    body{
+        padding:0;
+    }
+
+    .page{
+        min-height:100vh;
+        padding:65px 22px 45px;
+        border:none;
+    }
+
+    .page:before{
+        inset:12px;
+    }
+
+    .page:after{
+        inset:18px;
+    }
+
+    .special{
+        font-size:12px;
+        letter-spacing:5px;
+        margin-bottom:30px;
+    }
+
+    .name{
+        font-size:70px;
+    }
+
+    .and{
+        font-size:38px;
+        margin:18px 0 5px;
+    }
+
+    .decor{
+        margin:30px 0;
+    }
+
+    .decor span{
+        width:80px;
+    }
+
+    .flower{
+        font-size:24px;
+    }
+
+    .message{
+        font-size:19px;
+        padding:22px 18px;
+        border-radius:25px;
+    }
+
+    .description{
+        font-size:15px;
+        line-height:1.7;
+        margin:35px auto 45px;
+    }
+
+    .creator{
+        font-size:14px;
+    }
+
+    .whatsapp{
+        font-size:14px;
+        padding:10px 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- Dekorasi daun sederhana -->
+    <div class="leaf l1"></div>
+    <div class="leaf l2"></div>
+    <div class="leaf l3"></div>
+    <div class="leaf l4"></div>
+    <div class="leaf l5"></div>
+
+    <main class="content">
+
+        <div class="special">
+            A SPECIAL PAGE
+        </div>
+
+        <div class="name">
+            Sahril
+        </div>
+
+        <div class="and">
+            &
+        </div>
+
+        <div class="name">
+            Uum
+        </div>
+
+        <div class="decor">
+            <span></span>
+            <div class="flower">❀</div>
+            <span></span>
+        </div>
+
+        <div class="message">
+            This page will be used for the wedding
+            invitation of Sahril and Uum.
+            ~ coming soon ~
+        </div>
+
+        <div class="description">
+            A beautiful beginning, a meaningful journey,
+            and a celebration of love.
+        </div>
+
+        <div class="creator">
+            Created by:
+            <strong>bagiundangan.yuk</strong>
+        </div>
+
+        <!-- NOMOR WHATSAPP -->
+        <a
+            class="whatsapp"
+            href="https://wa.me/6287783233328"
+            target="_blank"
+            rel="noopener"
+        >
+            Chat: 0877-83233328
+        </a>
+
+    </main>
+
+</div>
+
+</body>
+</html>
