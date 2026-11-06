@@ -5065,9 +5065,23 @@ if (wishMessage && wishCount) {
 
       wishesContainer.appendChild(card);
 
+      console.log(
+    "Jumlah wish card:",
+    wishesContainer.children.length
+);
 
-      /* AKTIFKAN AOS */
+      
+/* AKTIFKAN AOS */
 
+if (typeof AOS !== "undefined") {
+
+    setTimeout(() => {
+
+        AOS.refreshHard();
+
+    }, 100);
+
+  }
       
 
     });
